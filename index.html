@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Joshua Emmons | Software Portfolio</title>
+  <title>Joshua Emmons | Software Engineering Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -13,39 +14,65 @@
       color: #eaeaea;
       animation: fadeIn 1.2s ease-in;
     }
+
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
+
     header {
       background: linear-gradient(90deg, #66fcf1, #45a29e);
       padding: 2rem;
       text-align: center;
       color: #0f1116;
     }
+
     h1 {
       font-size: 2.5rem;
       margin: 0;
     }
+
     p.subtitle {
       font-size: 1.1rem;
       margin-top: 0.5rem;
       color: #0f1116;
     }
+
+    nav {
+      background-color: #1f222a;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    nav a {
+      color: #66fcf1;
+      margin: 0 1rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
     section {
       padding: 2rem;
       max-width: 900px;
       margin: auto;
     }
+
     h2 {
       color: #66fcf1;
       border-bottom: 1px solid #45a29e;
       padding-bottom: 0.25rem;
     }
+
     ul {
       list-style: none;
       padding: 0;
     }
+
     li {
       margin-bottom: 1.2rem;
       padding: 1rem;
@@ -54,18 +81,38 @@
       transition: transform 0.2s ease-in-out;
       border-radius: 6px;
     }
+
     li:hover {
       transform: translateX(5px);
       background: #2c303a;
     }
+
     a {
       color: #66fcf1;
       font-weight: bold;
       text-decoration: none;
     }
+
     a:hover {
       text-decoration: underline;
     }
+
+    .icon-links {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .icon-links a {
+      margin: 0 10px;
+      color: #66fcf1;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .icon-links a:hover {
+      color: #ffffff;
+    }
+
     footer {
       background-color: #1f222a;
       text-align: center;
@@ -73,23 +120,38 @@
       font-size: 0.9rem;
       color: #aaa;
     }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 2rem;
+      }
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
       }
     }
   </style>
 </head>
 <body>
+
   <header>
     <h1>Joshua Emmons</h1>
     <p class="subtitle">Retired Navy | Software Engineer | CS 499 Capstone</p>
   </header>
 
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="software-design.html">Software Design</a>
+    <a href="algorithms.html">Algorithms</a>
+    <a href="databases.html">Databases</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="code-review.html">Code Review</a>
+  </nav>
+
   <section>
     <h2>Welcome to My Computer Science Capstone Portfolio</h2>
     <p>
-      I’m a Navy veteran transitioning into IT Field. This portfolio was built as the final project for my B.S. in Computer Science at SNHU. It demonstrates my growth in three core areas:
+      I’m a Navy veteran transitioning into the IT field. This portfolio was built as the final project for my B.S. in Computer Science at SNHU. It demonstrates my growth in three core areas:
     </p>
     <ul>
       <li>⚙️ Software Design & Engineering</li>
@@ -109,11 +171,19 @@
       <li><a href="self-assessment.html">📝 Professional Self-Assessment</a></li>
       <li><a href="code-review.html">📹 Code Review Walkthrough Video</a></li>
     </ul>
+
+    <div class="icon-links">
+      <a href="https://github.com/Pixelspacecowboy" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:joshua.emmons101@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
   </section>
 
   <footer>
-    &copy; 2025 Joshua Emmons | Embedded Systems Portfolio | Built with GitHub Pages
+    &copy; 2025 Joshua Emmons | Software Engineering Portfolio | Built with GitHub Pages
   </footer>
 </body>
 </html>
+
+
 
