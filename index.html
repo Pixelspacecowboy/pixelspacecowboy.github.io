@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Joshua Emmons | Software Engineer Portfolio showcasing projects in software design, algorithms, and databases.">
+  <meta name="author" content="Joshua Emmons">
   <title>Joshua Emmons | Software Engineering Portfolio</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
@@ -12,12 +15,19 @@
       padding: 0;
       background: linear-gradient(to bottom, #0f1116, #1c1f26);
       color: #eaeaea;
-      animation: fadeIn 1.2s ease-in;
+      opacity: 0;
+      transition: opacity 0.6s ease-in;
+      line-height: 1.6;
+      letter-spacing: 0.3px;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    body.loaded {
+      opacity: 1;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
 
     header {
@@ -32,10 +42,15 @@
       margin: 0;
     }
 
-    p.subtitle {
+    .subtitle {
       font-size: 1.1rem;
       margin-top: 0.5rem;
       color: #0f1116;
+    }
+
+    .cursor {
+      display: inline-block;
+      animation: blink 1s infinite;
     }
 
     nav {
@@ -49,6 +64,12 @@
       margin: 0 1rem;
       font-weight: bold;
       text-decoration: none;
+      padding: 0.25rem 0;
+    }
+
+    nav a.active {
+      border-bottom: 2px solid #66fcf1;
+      color: #ffffff;
     }
 
     nav a:hover {
@@ -56,16 +77,26 @@
       color: #ffffff;
     }
 
-    section {
+    main {
       padding: 2rem;
       max-width: 900px;
       margin: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
     }
 
     h2 {
       color: #66fcf1;
       border-bottom: 1px solid #45a29e;
       padding-bottom: 0.25rem;
+      transition: all 0.3s ease;
+    }
+
+    section:hover h2 {
+      color: #ffffff;
+      transform: scale(1.03);
     }
 
     ul {
@@ -80,11 +111,24 @@
       border-left: 4px solid #66fcf1;
       transition: transform 0.2s ease-in-out;
       border-radius: 6px;
+      display: flex;
+      align-items: center;
     }
 
     li:hover {
       transform: translateX(5px);
       background: #2c303a;
+    }
+
+    li i {
+      color: #66fcf1;
+      margin-right: 12px;
+      font-size: 1.2rem;
+      transition: transform 0.3s;
+    }
+
+    li:hover i {
+      transform: rotate(10deg);
     }
 
     a {
@@ -95,6 +139,15 @@
 
     a:hover {
       text-decoration: underline;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.15);
+      margin: 2rem 0;
     }
 
     .icon-links {
@@ -133,14 +186,13 @@
   </style>
 </head>
 <body>
-
   <header>
     <h1>Joshua Emmons</h1>
-    <p class="subtitle">Retired Navy | Software Engineer | CS 499 Capstone</p>
+    <p class="subtitle"><span id="typed-text"></span><span class="cursor">|</span></p>
   </header>
 
   <nav>
-    <a href="index.html">Home</a>
+    <a href="index.html" class="active">Home</a>
     <a href="software-design.html">Software Design</a>
     <a href="algorithms.html">Algorithms</a>
     <a href="databases.html">Databases</a>
@@ -148,42 +200,81 @@
     <a href="code-review.html">Code Review</a>
   </nav>
 
-  <section>
-    <h2>Welcome to My Computer Science Capstone Portfolio</h2>
-    <p>
-      I’m a Navy veteran transitioning into the IT field. This portfolio was built as the final project for my B.S. in Computer Science at SNHU. It demonstrates my growth in three core areas:
-    </p>
-    <ul>
-      <li>⚙️ Software Design & Engineering</li>
-      <li>🧠 Algorithms & Data Structures</li>
-      <li>🗃 Database Systems</li>
-    </ul>
+  <main>
+    <div class="glass-box">
+      <section>
+        <h2>Welcome to My Computer Science Capstone Portfolio</h2>
+        <p>
+          I’m a Navy veteran transitioning into the IT field. This portfolio was built as the final project for my B.S. in Computer Science at SNHU. It demonstrates my growth in three core areas:
+        </p>
+        <ul>
+          <li><i class="fas fa-cogs"></i>Software Design & Engineering</li>
+          <li><i class="fas fa-brain"></i>Algorithms & Data Structures</li>
+          <li><i class="fas fa-database"></i>Database Systems</li>
+        </ul>
+      </section>
 
-    <h2>Capstone Artifacts</h2>
-    <ul>
-      <li><a href="software-design.html">🌡 Thermostat Controller (Software Design & Engineering)</a></li>
-      <li><a href="algorithms.html">📊 Student Score Sorter (Algorithms & Data Structures)</a></li>
-      <li><a href="databases.html">📚 Book Tracker App (Databases)</a></li>
-    </ul>
+      <section>
+        <h2>Capstone Artifacts</h2>
+        <ul>
+          <li><i class="fas fa-thermometer-half"></i><a href="software-design.html">Thermostat Controller (Software Design & Engineering)</a></li>
+          <li><i class="fas fa-chart-line"></i><a href="algorithms.html">Student Score Sorter (Algorithms & Data Structures)</a></li>
+          <li><i class="fas fa-book"></i><a href="databases.html">Book Tracker App (Databases)</a></li>
+        </ul>
+      </section>
 
-    <h2>Supplemental Materials</h2>
-    <ul>
-      <li><a href="self-assessment.html">📝 Professional Self-Assessment</a></li>
-      <li><a href="code-review.html">📹 Code Review Walkthrough Video</a></li>
-    </ul>
+      <section>
+        <h2>Supplemental Materials</h2>
+        <ul>
+          <li><i class="fas fa-user-edit"></i><a href="self-assessment.html">Professional Self-Assessment</a></li>
+          <li><i class="fas fa-video"></i><a href="code-review.html">Code Review Walkthrough Video</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <p style="text-align: center; margin-top: 2rem;">
+          Want to work together or learn more? Check out my
+          <a href="https://github.com/Pixelspacecowboy" target="_blank">GitHub</a> or
+          <a href="mailto:joshua.emmons101@gmail.com">email me</a>.
+        </p>
+      </section>
+    </div>
 
     <div class="icon-links">
-      <a href="https://github.com/Pixelspacecowboy" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-      <a href="mailto:joshua.emmons101@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://github.com/Pixelspacecowboy" target="_blank" title="GitHub Profile" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:joshua.emmons101@gmail.com" title="Email Joshua" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/" target="_blank" title="LinkedIn Profile" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
     </div>
-  </section>
+  </main>
 
   <footer>
-   &copy; 2025 Joshua Emmons | Software Engineering Portfolio | Built with GitHub Pages
+    &copy; 2025 Joshua Emmons | Software Engineering Portfolio | Built with GitHub Pages
   </footer>
+
+  <!-- JS Effects -->
+  <script>
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    const text = "Retired Navy | Software Engineer | CS 499 Capstone";
+    let i = 0;
+    const speed = 75;
+    function typeEffect() {
+      if (i < text.length) {
+        document.getElementById("typed-text").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeEffect, speed);
+      }
+    }
+    window.onload = () => {
+      typeEffect();
+      document.body.classList.add("loaded");
+    };
+  </script>
 </body>
 </html>
+
 
 
 
