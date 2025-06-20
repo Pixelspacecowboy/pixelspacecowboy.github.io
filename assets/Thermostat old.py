@@ -1,0 +1,218 @@
+##
+## Import necessary modules for timing, state machines, and GPIO handling
+##
+from time import sleep
+from datetime import datetime
+from statemachine import StateMachine, State
+import board
+import adafruit_ahtx0
+import digitalio
+import adafruit_character_lcd.character_lcd as characterlcd
+import serial
+from gpiozero import Button, PWMLED
+from threading import Thread
+from math import floor
+
+## DEBUG flag - Enables verbose logging
+DEBUG = True
+
+## Create an I2C instance and initialize temperature/humidity sensor
+i2c = board.I2C()
+thSensor = adafruit_ahtx0.AHTx0(i2c)
+
+## Initialize Serial Communication (for external monitoring)
+ser = serial.Serial(
+    port='/dev/ttyS0',
+    baudrate=115200,
+    parity=serial.PARITY_NONE,
+    stopbits=serial.STOPBITS_ONE,
+    bytesize=serial.EIGHTBITS,
+    timeout=1
+)
+
+## Define LED indicators for heating (Red) and cooling (Blue)
+redLight = PWMLED(18)
+blueLight = PWMLED(23)
+
+## ManagedDisplay Class - Controls the LCD Display
+class ManagedDisplay():
+    def __init__(self):
+        """Initialize the LCD display with GPIO mappings"""
+        self.lcd_rs = digitalio.DigitalInOut(board.D17)
+        self.lcd_en = digitalio.DigitalInOut(board.D27)
+        self.lcd_d4 = digitalio.DigitalInOut(board.D5)
+        self.lcd_d5 = digitalio.DigitalInOut(board.D6)
+        self.lcd_d6 = digitalio.DigitalInOut(board.D13)
+        self.lcd_d7 = digitalio.DigitalInOut(board.D26)
+
+        self.lcd_columns = 16
+        self.lcd_rows = 2
+        self.lcd = characterlcd.Character_LCD_Mono(
+            self.lcd_rs, self.lcd_en, self.lcd_d4, self.lcd_d5, 
+            self.lcd_d6, self.lcd_d7, self.lcd_columns, self.lcd_rows
+        )
+
+        self.lcd.clear()
+
+    def cleanupDisplay(self):
+        """Clear and deinitialize the LCD display"""
+        self.lcd.clear()
+        self.lcd_rs.deinit()
+        self.lcd_en.deinit()
+        self.lcd_d4.deinit()
+        self.lcd_d5.deinit()
+        self.lcd_d6.deinit()
+        self.lcd_d7.deinit()
+
+    def updateScreen(self, message):
+        """Update the LCD screen with a given message"""
+        self.lcd.clear()
+        self.lcd.message = message
+
+## Initialize LCD Display
+screen = ManagedDisplay()
+
+## TemperatureMachine Class - Handles thermostat states
+class TemperatureMachine(StateMachine):
+    """State machine for thermostat operation"""
+
+    ## Define states: Off, Heating, Cooling
+    off = State(initial=True)
+    heat = State()
+    cool = State()
+
+    ## Default temperature setpoint
+    setPoint = 72  
+
+    ## Define transitions between states
+    cycle = (off.to(heat) | heat.to(cool) | cool.to(off))
+
+    def on_enter_heat(self):
+        """Enter heating state: Red LED on, Blue LED off"""
+        self.updateLights()
+        if DEBUG: print("* Changing state to HEAT")
+
+    def on_exit_heat(self):
+        """Exit heating state"""
+        redLight.off()
+
+    def on_enter_cool(self):
+        """Enter cooling state: Blue LED on, Red LED off"""
+        self.updateLights()
+        if DEBUG: print("* Changing state to COOL")
+
+    def on_exit_cool(self):
+        """Exit cooling state"""
+        blueLight.off()
+
+    def on_enter_off(self):
+        """Enter idle state: Both LEDs off"""
+        redLight.off()
+        blueLight.off()
+        if DEBUG: print("* Changing state to OFF")
+
+    def processTempStateButton(self):
+        """Cycle thermostat state"""
+        if DEBUG: print("Cycling Temperature State")
+        self.cycle()
+        self.updateLights()
+
+    def processTempIncButton(self):
+        """Increase temperature setpoint"""
+        self.setPoint += 1
+        self.updateLights()
+        if DEBUG: print(f"SetPoint increased: {self.setPoint}°F")
+
+    def processTempDecButton(self):
+        """Decrease temperature setpoint"""
+        self.setPoint -= 1
+        self.updateLights()
+        if DEBUG: print(f"SetPoint decreased: {self.setPoint}°F")
+
+    def updateLights(self):
+        """Update LED indicators based on temperature"""
+        temp = floor(self.getFahrenheit())
+        redLight.off()
+        blueLight.off()
+
+        if self.current_state == self.heat:
+            if temp < self.setPoint:
+                redLight.pulse()
+            else:
+                redLight.on()
+        elif self.current_state == self.cool:
+            if temp > self.setPoint:
+                blueLight.pulse()
+            else:
+                blueLight.on()
+
+    def run(self):
+        """Start LCD update thread"""
+        myThread = Thread(target=self.manageMyDisplay)
+        myThread.start()
+
+    def getFahrenheit(self):
+        """Retrieve temperature in Fahrenheit"""
+        return (thSensor.temperature * 9/5) + 32
+
+    def setupSerialOutput(self):
+        """Format serial output"""
+        return f"{self.current_state.id},{self.getFahrenheit():.1f},{self.setPoint}"
+
+    endDisplay = False
+
+    def manageMyDisplay(self):
+        """Manage LCD display updates"""
+        counter = 1
+        altCounter = 1
+
+        while not self.endDisplay:
+            current_time = datetime.now().strftime('%b %d %H:%M:%S')
+
+            if altCounter < 6:
+                lcd_line_2 = f"Temp: {self.getFahrenheit():.1f}°F"
+                altCounter += 1
+            else:
+                lcd_line_2 = f"State: {self.current_state.id} | SP: {self.setPoint}°F"
+                altCounter += 1
+                if altCounter >= 11:
+                    self.updateLights()
+                    altCounter = 1
+
+            screen.updateScreen(f"{current_time}\n{lcd_line_2}")
+
+            if DEBUG: print(f"Counter: {counter}")
+            if counter % 30 == 0:
+                ser.write(self.setupSerialOutput().encode('utf-8'))
+                counter = 1
+            else:
+                counter += 1
+
+            sleep(1)
+
+        screen.cleanupDisplay()
+
+## Initialize State Machine
+tsm = TemperatureMachine()
+tsm.run()
+
+## Configure GPIO Buttons
+greenButton = Button(24)
+greenButton.when_pressed = tsm.processTempStateButton
+
+redButton = Button(25)
+redButton.when_pressed = tsm.processTempIncButton
+
+blueButton = Button(12)
+blueButton.when_pressed = tsm.processTempDecButton
+
+## Main loop
+repeat = True
+while repeat:
+    try:
+        sleep(30)
+    except KeyboardInterrupt:
+        print("Cleaning up. Exiting...")
+        repeat = False
+        tsm.endDisplay = True
+        sleep(1)
