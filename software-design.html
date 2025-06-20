@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thermostat Controller (Software Design & Engineering)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -12,24 +13,80 @@
       max-width: 800px;
       margin: auto;
       padding: 2rem;
+      line-height: 1.6;
     }
-    h1 { color: #66fcf1; }
-    ul { list-style-type: square; padding-left: 1.2rem; }
-    a { color: #66fcf1; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
+    h1 {
+      color: #66fcf1;
+      border-bottom: 1px solid #45a29e;
+      padding-bottom: 0.25rem;
+    }
+
+    h2 {
+      color: #45a29e;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      background: #1f222a;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #66fcf1;
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    li:hover {
+      background: #2c303a;
+    }
+
+    a {
+      color: #66fcf1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      margin-top: 2rem;
+      display: inline-block;
+    }
+
+    .back-link i {
+      margin-right: 6px;
+    }
   </style>
 </head>
 <body>
+
   <h1>Thermostat Controller (Software Design & Engineering)</h1>
-  <p>This project demonstrates my software design and engineering skills through the development of a modular thermostat controller using Python. I implemented finite state machines, GPIO logic simulation, and abstraction for maintainable and scalable design. Enhanced to reflect clean code practices, modularity, and testability.</p>
+  <p>
+    This project demonstrates my software design and engineering skills through the development of a modular thermostat controller using Python. It features:
+  </p>
+  <ul>
+    <li>📦 Finite State Machine for managing heating/cooling states</li>
+    <li>🧪 Modular design for unit testing and readability</li>
+    <li>⚙️ GPIO simulation using Raspberry Pi hardware interfaces</li>
+    <li>🧼 Refactored logic with improved commenting and documentation</li>
+  </ul>
+
   <h2>Included Files</h2>
   <ul>
-    <li><a href="assets/constants.py">constants.py</a></li>
-    <li><a href="assets/Thermostat_controller.py">Thermostat_controller.py</a></li>
-    <li><a href="assets/utils.py">utils.py</a></li>
-    <li><a href="assets/Flowchart.pdf">Flowchart.pdf</a></li>
-    <li><a href="assets/README.md">README.md</a></li>
+    <li><a href="assets/constants.py" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> constants.py</a></li>
+    <li><a href="assets/Thermostat_controller.py" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> Thermostat_controller.py</a></li>
+    <li><a href="assets/utils.py" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> utils.py</a></li>
+    <li><a href="assets/Flowchart.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-sitemap"></i> Flowchart.pdf</a></li>
+    <li><a href="assets/README.md" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt"></i> README.md</a></li>
   </ul>
-  <p><a href="index.html">← Back to Home</a></p>
+
+  <p class="back-link"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+
 </body>
 </html>
