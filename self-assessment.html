@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Professional Self-Assessment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -12,15 +13,83 @@
       max-width: 800px;
       margin: auto;
       padding: 2rem;
+      line-height: 1.6;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
     }
-    h1 { color: #66fcf1; }
-    a { color: #66fcf1; text-decoration: none; }
-    a:hover { text-decoration: underline; }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    h1 {
+      color: #66fcf1;
+      font-size: 2.4rem;
+      border-bottom: 1px solid #45a29e;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1rem;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.15);
+    }
+
+    a {
+      color: #66fcf1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .back-link {
+      margin-top: 2rem;
+      display: inline-block;
+    }
+
+    .back-link i {
+      margin-right: 6px;
+    }
+
+    p::before {
+      content: "🧠 ";
+      color: #66fcf1;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <h1>Professional Self-Assessment</h1>
-  <p>My personal and professional reflection on transitioning from the Navy into software engineering. This self-assessment covers collaboration, communication, technical growth, and my career direction in cybersecurity and software systems.</p>
-  <p><a href="index.html">← Back to Home</a></p>
+  <div class="glass-box">
+    <h1><i class="fas fa-user-check"></i> Professional Self-Assessment</h1>
+
+    <p>
+      Transitioning from the Navy to software engineering has been a journey shaped by resilience, discipline, and adaptability. My experiences as an Electrical Plant Operator gave me a strong foundation in systems thinking—skills I now use in software design, troubleshooting, and automation.
+    </p>
+
+    <p>
+      Over the course of the Computer Science program, I’ve developed collaborative coding habits through GitHub, improved technical communication for both technical and non-technical audiences, and grown confident in using data structures and secure coding practices in Python, C++, and SQL.
+    </p>
+
+    <p>
+      I’m especially passionate about the cybersecurity field, with long-term goals to pursue roles in DevSecOps or as a security-focused software engineer. I thrive in environments where I can build systems that are both robust and resilient—just like the ones I worked on while serving.
+    </p>
+
+    <p>
+      This self-assessment reflects both my professional evolution and my commitment to building software that serves real-world needs with reliability and purpose.
+    </p>
+
+    <p class="back-link"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+  </div>
 </body>
 </html>
