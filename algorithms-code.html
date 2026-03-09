@@ -1,302 +1,316 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Score Sorter | Joshua Emmons</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Score Sorter | Joshua Emmons</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #0f1116, #1c1f26);
+      color: #eaeaea;
+      line-height: 1.7;
+      letter-spacing: 0.2px;
+    }
 
-<style>
+    header {
+      background: linear-gradient(90deg, #66fcf1, #45a29e);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #0f1116;
+    }
 
-body{
-font-family:'Segoe UI',sans-serif;
-background:linear-gradient(to bottom,#0f1116,#1c1f26);
-color:#eaeaea;
-max-width:950px;
-margin:auto;
-padding:2rem;
-line-height:1.7;
-letter-spacing:0.2px;
-}
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+    }
 
-h1{
-color:#66fcf1;
-border-bottom:1px solid #45a29e;
-padding-bottom:0.35rem;
-margin-bottom:0.5rem;
-}
+    header p {
+      margin: 0.5rem 0 0;
+      font-weight: 600;
+    }
 
-h2{
-color:#45a29e;
-margin-top:2rem;
-margin-bottom:0.75rem;
-}
+    nav {
+      background-color: #1f222a;
+      text-align: center;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
 
-.subtitle{
-color:#b8c0cc;
-font-size:1.05rem;
-margin-bottom:1.5rem;
-}
+    nav a {
+      color: #66fcf1;
+      margin: 0 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.25rem 0;
+    }
 
-.section-box{
-background:rgba(255,255,255,0.05);
-border-radius:12px;
-padding:1.5rem;
-margin-bottom:1.5rem;
-box-shadow:0 0 10px rgba(102,252,241,0.08);
-}
+    nav a.active {
+      border-bottom: 2px solid #66fcf1;
+      color: #ffffff;
+    }
 
-ul{
-list-style:none;
-padding-left:0;
-}
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
 
-li{
-background:#1f222a;
-padding:1rem;
-margin-bottom:1rem;
-border-left:4px solid #66fcf1;
-border-radius:6px;
-transition:background .3s ease,transform .2s ease;
-display:flex;
-align-items:flex-start;
-gap:10px;
-}
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
 
-li:hover{
-background:#2c303a;
-transform:translateX(4px);
-}
+    .glass-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.15);
+      margin: 2rem 0;
+    }
 
-li i{
-color:#66fcf1;
-margin-top:4px;
-min-width:18px;
-}
+    h2 {
+      color: #66fcf1;
+      border-bottom: 1px solid #45a29e;
+      padding-bottom: 0.25rem;
+      margin-top: 0;
+    }
 
-.tech-list{
-display:flex;
-flex-wrap:wrap;
-gap:.7rem;
-margin-top:.7rem;
-}
+    .subtitle {
+      color: #b8c0cc;
+      font-size: 1.05rem;
+      margin-bottom: 1.5rem;
+    }
 
-.tech-badge{
-background:#1f222a;
-color:#66fcf1;
-padding:.45rem .8rem;
-border-radius:999px;
-font-size:.9rem;
-border:1px solid #45a29e;
-}
+    .section-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.08);
+    }
 
-a{
-color:#66fcf1;
-text-decoration:none;
-font-weight:bold;
-}
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
 
-a:hover{
-text-decoration:underline;
-}
+    li {
+      background: #1f222a;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-left: 4px solid #66fcf1;
+      border-radius: 6px;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
 
-.file-links li{
-align-items:center;
-}
+    li:hover {
+      background: #2c303a;
+      transform: translateX(4px);
+    }
 
-.back-link{
-margin-top:1rem;
-display:inline-block;
-}
+    li i {
+      color: #66fcf1;
+      margin-top: 4px;
+      min-width: 18px;
+    }
 
-.back-link i{
-margin-right:6px;
-}
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
 
-.top-links{
-display:flex;
-gap:1rem;
-flex-wrap:wrap;
-margin:1rem 0 .5rem;
-}
+    .tech-badge {
+      background: #1f222a;
+      color: #66fcf1;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: 1px solid #45a29e;
+    }
 
-.top-links a{
-background:#1f222a;
-padding:.7rem 1rem;
-border-radius:8px;
-border:1px solid #45a29e;
-}
+    .top-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0 1.5rem;
+    }
 
-.top-links a:hover{
-background:#2c303a;
-text-decoration:none;
-}
+    .top-links a {
+      display: inline-block;
+      background: #1f222a;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #45a29e;
+      color: #66fcf1;
+      font-weight: bold;
+      text-decoration: none;
+    }
 
-</style>
+    .top-links a:hover {
+      background: #2c303a;
+      text-decoration: none;
+    }
+
+    a {
+      color: #66fcf1;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .icon-links {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .icon-links a {
+      margin: 0 10px;
+      color: #66fcf1;
+      font-size: 1.6rem;
+      transition: color 0.3s ease, transform 0.2s ease;
+    }
+
+    .icon-links a:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    footer {
+      background-color: #1f222a;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      .glass-box {
+        padding: 1.25rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<p class="back-link">
-<a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
-</p>
+  <header>
+    <h1>Joshua Emmons</h1>
+    <p>Software Engineer | Automation Developer | Navy Veteran</p>
+  </header>
 
-<h1>Student Score Sorter</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="thermostat-code.html">Software Design</a>
+    <a href="algorithms-code.html" class="active">Algorithms</a>
+    <a href="databases-code.html">Databases</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="code-review.html">Code Review</a>
+  </nav>
 
-<p class="subtitle">
-Algorithm-focused project demonstrating sorting efficiency, search optimization, and structured data processing in Python.
-</p>
+  <main>
+    <div class="glass-box">
+      <h2>Student Score Sorter</h2>
+      <p class="subtitle">
+        Algorithm-focused project demonstrating sorting efficiency, search optimization, and structured data processing in Python.
+      </p>
 
-<div class="top-links">
-<a href="assets/student_score_sorter_enhanced.py" target="_blank">
-<i class="fas fa-code"></i> View Main Code
-</a>
+      <div class="top-links">
+        <a href="assets/student_score_sorter_enhanced.py" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-code"></i> View Main Code
+        </a>
+        <a href="assets/tests_test_score_sorter.py" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-vial"></i> View Tests
+        </a>
+        <a href="assets/requirements.txt" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-file-alt"></i> Requirements
+        </a>
+      </div>
 
-<a href="assets/tests_test_score_sorter.py" target="_blank">
-<i class="fas fa-vial"></i> View Tests
-</a>
+      <div class="section-box">
+        <h2>Project Overview</h2>
+        <p>
+          This project demonstrates the implementation of efficient algorithms and data structures through the development of a student score sorting and lookup system written in Python.
+        </p>
+        <p>
+          The application processes collections of student records, organizes them using merge sort, and enables fast retrieval of individual records using binary search.
+        </p>
+      </div>
 
-<a href="assets/requirements.txt" target="_blank">
-<i class="fas fa-file-alt"></i> Requirements
-</a>
-</div>
+      <div class="section-box">
+        <h2>Problem the Project Solves</h2>
+        <p>
+          As datasets grow, sorting and searching records inefficiently can slow applications and reduce usability. This project addresses that by combining merge sort for efficient ordering with binary search for fast lookup of specific records.
+        </p>
+      </div>
 
-<div class="section-box">
+      <div class="section-box">
+        <h2>Key Features</h2>
+        <ul>
+          <li><i class="fas fa-chart-line"></i> Merge sort implementation for efficient sorting of student score datasets</li>
+          <li><i class="fas fa-search"></i> Binary search algorithm for fast record lookup</li>
+          <li><i class="fas fa-tachometer-alt"></i> Performance comparison between sorting and searching operations</li>
+          <li><i class="fas fa-vial"></i> Unit testing covering edge cases and functionality validation</li>
+          <li><i class="fas fa-code"></i> Clean and modular Python implementation</li>
+        </ul>
+      </div>
 
-<h2>Project Overview</h2>
+      <div class="section-box">
+        <h2>Technologies & Concepts</h2>
+        <div class="tech-list">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Algorithms</span>
+          <span class="tech-badge">Merge Sort</span>
+          <span class="tech-badge">Binary Search</span>
+          <span class="tech-badge">Data Structures</span>
+          <span class="tech-badge">Unit Testing</span>
+        </div>
+      </div>
 
-<p>
-This project demonstrates the implementation of efficient algorithms and data structures through the development of a student score sorting and lookup system written in Python.
-</p>
+      <div class="section-box">
+        <h2>Engineering Focus</h2>
+        <p>
+          This project highlights core computer science principles including algorithm efficiency, time complexity, structured data processing, and the importance of testing for reliability.
+        </p>
+      </div>
+    </div>
 
-<p>
-The application processes collections of student records, organizes them using the merge sort algorithm, and enables fast retrieval of individual records using binary search.
-</p>
+    <div class="icon-links">
+      <a href="https://github.com/Pixelspacecowboy" target="_blank" title="GitHub Profile" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:joshua.emmons101@gmail.com" title="Email Joshua" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/" target="_blank" title="LinkedIn Profile" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </main>
 
-<p>
-The project emphasizes algorithm efficiency, structured data processing, and performance-focused design.
-</p>
-
-</div>
-
-<div class="section-box">
-
-<h2>Problem the Project Solves</h2>
-
-<p>
-Large datasets often require efficient sorting and search mechanisms to quickly retrieve information. Without optimized algorithms, operations such as sorting records or locating specific entries can become computationally expensive as datasets grow.
-</p>
-
-<p>
-This project addresses that challenge by implementing merge sort for efficient sorting and binary search for fast data retrieval.
-</p>
-
-</div>
-
-<div class="section-box">
-
-<h2>Key Features</h2>
-
-<ul>
-
-<li>
-<i class="fas fa-chart-line"></i>
-Merge sort implementation for efficient sorting of student score datasets
-</li>
-
-<li>
-<i class="fas fa-search"></i>
-Binary search algorithm for fast record lookup
-</li>
-
-<li>
-<i class="fas fa-tachometer-alt"></i>
-Performance comparison between sorting and searching operations
-</li>
-
-<li>
-<i class="fas fa-vial"></i>
-Unit testing covering edge cases and functionality validation
-</li>
-
-<li>
-<i class="fas fa-code"></i>
-Clean and modular Python implementation
-</li>
-
-</ul>
-
-</div>
-
-<div class="section-box">
-
-<h2>Technologies & Concepts</h2>
-
-<div class="tech-list">
-
-<span class="tech-badge">Python</span>
-<span class="tech-badge">Algorithms</span>
-<span class="tech-badge">Merge Sort</span>
-<span class="tech-badge">Binary Search</span>
-<span class="tech-badge">Data Structures</span>
-<span class="tech-badge">Unit Testing</span>
-
-</div>
-
-</div>
-
-<div class="section-box">
-
-<h2>Engineering Focus</h2>
-
-<p>
-This project highlights several fundamental computer science principles including algorithm efficiency, time complexity considerations, and structured program design.
-</p>
-
-<p>
-By combining merge sort and binary search, the system demonstrates how algorithm selection directly impacts performance when working with large datasets.
-</p>
-
-</div>
-
-<div class="section-box">
-
-<h2>Included Files</h2>
-
-<ul class="file-links">
-
-<li>
-<i class="fas fa-code"></i>
-<a href="assets/student_score_sorter_enhanced.py" target="_blank">student_score_sorter_enhanced.py</a>
-</li>
-
-<li>
-<i class="fas fa-vial"></i>
-<a href="assets/tests_test_score_sorter.py" target="_blank">tests_test_score_sorter.py</a>
-</li>
-
-<li>
-<i class="fas fa-file-alt"></i>
-<a href="assets/requirements.txt" target="_blank">requirements.txt</a>
-</li>
-
-</ul>
-
-</div>
-
-<div class="section-box">
-
-<h2>Why This Project Matters</h2>
-
-<p>
-Efficient data processing is a fundamental requirement in software systems. This project demonstrates how algorithm design and data structure selection can significantly improve the performance of applications handling structured data.
-</p>
-
-<p>
-It also highlights the importance of combining algorithmic knowledge with practical implementation and testing to produce reliable and scalable solutions.
-</p>
-
-</div>
+  <footer>
+    &copy; 2026 Joshua Emmons | Software Engineer Portfolio | Built with GitHub Pages
+  </footer>
 
 </body>
 </html>
