@@ -1,91 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Score Sorter (Algorithms & Data Structures)</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0f1116;
-      color: #eaeaea;
-      max-width: 800px;
-      margin: auto;
-      padding: 2rem;
-      line-height: 1.6;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Score Sorter | Joshua Emmons</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-    h1 {
-      color: #66fcf1;
-      border-bottom: 1px solid #45a29e;
-      padding-bottom: 0.25rem;
-    }
+<style>
 
-    h2 {
-      color: #45a29e;
-      margin-top: 2rem;
-    }
+body{
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(to bottom,#0f1116,#1c1f26);
+color:#eaeaea;
+max-width:950px;
+margin:auto;
+padding:2rem;
+line-height:1.7;
+letter-spacing:0.2px;
+}
 
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
+h1{
+color:#66fcf1;
+border-bottom:1px solid #45a29e;
+padding-bottom:0.35rem;
+margin-bottom:0.5rem;
+}
 
-    li {
-      background: #1f222a;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-left: 4px solid #66fcf1;
-      border-radius: 6px;
-      transition: background 0.3s ease;
-    }
+h2{
+color:#45a29e;
+margin-top:2rem;
+margin-bottom:0.75rem;
+}
 
-    li:hover {
-      background: #2c303a;
-    }
+.subtitle{
+color:#b8c0cc;
+font-size:1.05rem;
+margin-bottom:1.5rem;
+}
 
-    a {
-      color: #66fcf1;
-      text-decoration: none;
-      font-weight: bold;
-    }
+.section-box{
+background:rgba(255,255,255,0.05);
+border-radius:12px;
+padding:1.5rem;
+margin-bottom:1.5rem;
+box-shadow:0 0 10px rgba(102,252,241,0.08);
+}
 
-    a:hover {
-      text-decoration: underline;
-    }
+ul{
+list-style:none;
+padding-left:0;
+}
 
-    .back-link {
-      margin-top: 2rem;
-      display: inline-block;
-    }
+li{
+background:#1f222a;
+padding:1rem;
+margin-bottom:1rem;
+border-left:4px solid #66fcf1;
+border-radius:6px;
+transition:background .3s ease,transform .2s ease;
+display:flex;
+align-items:flex-start;
+gap:10px;
+}
 
-    .back-link i {
-      margin-right: 6px;
-    }
-  </style>
+li:hover{
+background:#2c303a;
+transform:translateX(4px);
+}
+
+li i{
+color:#66fcf1;
+margin-top:4px;
+min-width:18px;
+}
+
+.tech-list{
+display:flex;
+flex-wrap:wrap;
+gap:.7rem;
+margin-top:.7rem;
+}
+
+.tech-badge{
+background:#1f222a;
+color:#66fcf1;
+padding:.45rem .8rem;
+border-radius:999px;
+font-size:.9rem;
+border:1px solid #45a29e;
+}
+
+a{
+color:#66fcf1;
+text-decoration:none;
+font-weight:bold;
+}
+
+a:hover{
+text-decoration:underline;
+}
+
+.file-links li{
+align-items:center;
+}
+
+.back-link{
+margin-top:1rem;
+display:inline-block;
+}
+
+.back-link i{
+margin-right:6px;
+}
+
+.top-links{
+display:flex;
+gap:1rem;
+flex-wrap:wrap;
+margin:1rem 0 .5rem;
+}
+
+.top-links a{
+background:#1f222a;
+padding:.7rem 1rem;
+border-radius:8px;
+border:1px solid #45a29e;
+}
+
+.top-links a:hover{
+background:#2c303a;
+text-decoration:none;
+}
+
+</style>
 </head>
+
 <body>
 
-  <h1>Student Score Sorter (Algorithms & Data Structures)</h1>
-  <p>
-    This project demonstrates my skills in algorithms and data structures by implementing a student score sorter. The application uses an efficient merge sort algorithm to organize data and binary search to quickly locate specific student records.
-  </p>
-  <ul>
-    <li>📊 Merge sort implementation for efficient sorting of student score data</li>
-    <li>🔍 Binary search for constant-time score lookup</li>
-    <li>⚡ Performance benchmarking between sorting and search phases</li>
-    <li>🧪 Unit-tested with various edge cases for sorting and search functionality</li>
-  </ul>
+<p class="back-link">
+<a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+</p>
 
-  <h2>Included Files</h2>
-  <ul>
-    <li><a href="assets/student_score_sorter_enhanced.py" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> student_score_sorter_enhanced.py</a></li>
-    <li><a href="assets/tests_test_score_sorter.py" target="_blank" rel="noopener noreferrer"><i class="fas fa-vial"></i> tests_test_score_sorter.py</a></li>
-    <li><a href="assets/requirements.txt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt"></i> requirements.txt</a></li>
-  </ul>
+<h1>Student Score Sorter</h1>
 
-  <p class="back-link"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+<p class="subtitle">
+Algorithm-focused project demonstrating sorting efficiency, search optimization, and structured data processing in Python.
+</p>
+
+<div class="top-links">
+<a href="assets/student_score_sorter_enhanced.py" target="_blank">
+<i class="fas fa-code"></i> View Main Code
+</a>
+
+<a href="assets/tests_test_score_sorter.py" target="_blank">
+<i class="fas fa-vial"></i> View Tests
+</a>
+
+<a href="assets/requirements.txt" target="_blank">
+<i class="fas fa-file-alt"></i> Requirements
+</a>
+</div>
+
+<div class="section-box">
+
+<h2>Project Overview</h2>
+
+<p>
+This project demonstrates the implementation of efficient algorithms and data structures through the development of a student score sorting and lookup system written in Python.
+</p>
+
+<p>
+The application processes collections of student records, organizes them using the merge sort algorithm, and enables fast retrieval of individual records using binary search.
+</p>
+
+<p>
+The project emphasizes algorithm efficiency, structured data processing, and performance-focused design.
+</p>
+
+</div>
+
+<div class="section-box">
+
+<h2>Problem the Project Solves</h2>
+
+<p>
+Large datasets often require efficient sorting and search mechanisms to quickly retrieve information. Without optimized algorithms, operations such as sorting records or locating specific entries can become computationally expensive as datasets grow.
+</p>
+
+<p>
+This project addresses that challenge by implementing merge sort for efficient sorting and binary search for fast data retrieval.
+</p>
+
+</div>
+
+<div class="section-box">
+
+<h2>Key Features</h2>
+
+<ul>
+
+<li>
+<i class="fas fa-chart-line"></i>
+Merge sort implementation for efficient sorting of student score datasets
+</li>
+
+<li>
+<i class="fas fa-search"></i>
+Binary search algorithm for fast record lookup
+</li>
+
+<li>
+<i class="fas fa-tachometer-alt"></i>
+Performance comparison between sorting and searching operations
+</li>
+
+<li>
+<i class="fas fa-vial"></i>
+Unit testing covering edge cases and functionality validation
+</li>
+
+<li>
+<i class="fas fa-code"></i>
+Clean and modular Python implementation
+</li>
+
+</ul>
+
+</div>
+
+<div class="section-box">
+
+<h2>Technologies & Concepts</h2>
+
+<div class="tech-list">
+
+<span class="tech-badge">Python</span>
+<span class="tech-badge">Algorithms</span>
+<span class="tech-badge">Merge Sort</span>
+<span class="tech-badge">Binary Search</span>
+<span class="tech-badge">Data Structures</span>
+<span class="tech-badge">Unit Testing</span>
+
+</div>
+
+</div>
+
+<div class="section-box">
+
+<h2>Engineering Focus</h2>
+
+<p>
+This project highlights several fundamental computer science principles including algorithm efficiency, time complexity considerations, and structured program design.
+</p>
+
+<p>
+By combining merge sort and binary search, the system demonstrates how algorithm selection directly impacts performance when working with large datasets.
+</p>
+
+</div>
+
+<div class="section-box">
+
+<h2>Included Files</h2>
+
+<ul class="file-links">
+
+<li>
+<i class="fas fa-code"></i>
+<a href="assets/student_score_sorter_enhanced.py" target="_blank">student_score_sorter_enhanced.py</a>
+</li>
+
+<li>
+<i class="fas fa-vial"></i>
+<a href="assets/tests_test_score_sorter.py" target="_blank">tests_test_score_sorter.py</a>
+</li>
+
+<li>
+<i class="fas fa-file-alt"></i>
+<a href="assets/requirements.txt" target="_blank">requirements.txt</a>
+</li>
+
+</ul>
+
+</div>
+
+<div class="section-box">
+
+<h2>Why This Project Matters</h2>
+
+<p>
+Efficient data processing is a fundamental requirement in software systems. This project demonstrates how algorithm design and data structure selection can significantly improve the performance of applications handling structured data.
+</p>
+
+<p>
+It also highlights the importance of combining algorithmic knowledge with practical implementation and testing to produce reliable and scalable solutions.
+</p>
+
+</div>
 
 </body>
 </html>
