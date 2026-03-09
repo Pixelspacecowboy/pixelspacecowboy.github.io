@@ -137,6 +137,13 @@
       background: #2c303a;
     }
 
+    .project-image {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 1rem;
+      border: 1px solid rgba(102, 252, 241, 0.2);
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 1rem;
@@ -156,7 +163,7 @@
 
   <h1>Thermostat Controller</h1>
   <p class="subtitle">
-    Embedded software design project focused on automation, control logic, and modular Python development.
+    Embedded software and hardware integration project focused on automation, control logic, and modular Python development.
   </p>
 
   <div class="top-links">
@@ -175,13 +182,14 @@
     <h2>Project Overview</h2>
     <p>
       This project demonstrates my software design and engineering skills through the development
-      of a modular thermostat controller in Python. The system was designed to simulate thermostat
-      behavior using structured control logic and GPIO-style hardware interaction concepts commonly
-      used in embedded systems.
+      of a modular thermostat controller in Python. In addition to writing the control software,
+      I also built the supporting circuit hardware used to simulate thermostat behavior and system interaction.
     </p>
     <p>
-      The project emphasizes maintainability, clear design, and practical engineering principles by
-      separating logic into reusable modules and organizing the controller around a finite state machine.
+      The project combines software structure, control logic, and physical hardware integration
+      to demonstrate how embedded systems can connect code with real-world electrical behavior.
+      The controller was organized around a finite state machine and designed with modular components
+      for clarity, maintainability, and future expansion.
     </p>
   </div>
 
@@ -194,7 +202,8 @@
     </p>
     <p>
       This project addresses that challenge by implementing a clean, modular controller that manages
-      system state transitions in a predictable and readable way.
+      system state transitions in a predictable and readable way while also connecting that logic
+      to physical circuit behavior.
     </p>
   </div>
 
@@ -204,9 +213,23 @@
       <li><i class="fas fa-project-diagram"></i> Finite state machine used to manage heating and cooling behavior</li>
       <li><i class="fas fa-puzzle-piece"></i> Modular Python structure designed for readability and maintainability</li>
       <li><i class="fas fa-microchip"></i> GPIO-style interaction modeled around Raspberry Pi hardware concepts</li>
+      <li><i class="fas fa-tools"></i> Physical circuit construction to support hardware and control-system integration</li>
       <li><i class="fas fa-vial"></i> Improved structure to support testing and future enhancements</li>
       <li><i class="fas fa-file-code"></i> Refactored logic with cleaner comments and documentation</li>
     </ul>
+  </div>
+
+  <div class="section-box">
+    <h2>Hardware Implementation</h2>
+    <p>
+      In addition to the software controller, I built the physical circuit used for the project.
+      This allowed me to connect the control logic to real hardware behavior and better understand
+      how embedded software interacts with electrical components in a working system.
+    </p>
+    <p>
+      Building the circuit strengthened the project by demonstrating hands-on integration between
+      software, electronics, and system control concepts rather than limiting the work to code alone.
+    </p>
   </div>
 
   <div class="section-box">
@@ -217,6 +240,7 @@
       <span class="tech-badge">Finite State Machine</span>
       <span class="tech-badge">Modular Design</span>
       <span class="tech-badge">GPIO Concepts</span>
+      <span class="tech-badge">Hardware Integration</span>
       <span class="tech-badge">Software Engineering</span>
     </div>
   </div>
@@ -230,7 +254,7 @@
     </p>
     <p>
       It also reflects my interest in automation and control systems by combining software structure
-      with practical real-world system behavior.
+      with practical real-world system behavior and physical circuit implementation.
     </p>
   </div>
 
@@ -267,7 +291,26 @@
       maintainable, and grounded in real engineering logic. It demonstrates how I approach systems that
       combine structured software behavior with practical operational use cases.
     </p>
+    <p>
+      By building both the controller software and the physical circuit, I was able to demonstrate
+      a stronger understanding of embedded systems, hardware interaction, and end-to-end engineering design.
+    </p>
   </div>
+
+  <!-- Optional image section: use this if you add a circuit photo later -->
+  <!--
+  <div class="section-box">
+    <h2>Project Hardware</h2>
+    <p>
+      Below is the physical circuit built to support the thermostat controller project.
+    </p>
+    <img
+      src="assets/thermostat-circuit.jpg"
+      alt="Thermostat controller circuit"
+      class="project-image"
+    >
+  </div>
+  -->
 
 </body>
 </html>
