@@ -4,45 +4,93 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thermostat Controller | Joshua Emmons</title>
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
       background: linear-gradient(to bottom, #0f1116, #1c1f26);
       color: #eaeaea;
-      max-width: 950px;
-      margin: auto;
-      padding: 2rem;
       line-height: 1.7;
       letter-spacing: 0.2px;
     }
 
-    h1 {
+    header {
+      background: linear-gradient(90deg, #66fcf1, #45a29e);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: #0f1116;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-weight: 600;
+    }
+
+    nav {
+      background-color: #1f222a;
+      text-align: center;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
       color: #66fcf1;
-      border-bottom: 1px solid #45a29e;
-      padding-bottom: 0.35rem;
-      margin-bottom: 0.5rem;
+      margin: 0 1rem;
+      font-weight: bold;
+      text-decoration: none;
+      padding: 0.25rem 0;
+    }
+
+    nav a.active {
+      border-bottom: 2px solid #66fcf1;
+      color: #ffffff;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #ffffff;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+      padding: 2rem 1rem;
+    }
+
+    .glass-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 15px;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.15);
+      margin: 2rem 0;
     }
 
     h2 {
-      color: #45a29e;
-      margin-top: 2rem;
-      margin-bottom: 0.75rem;
-    }
-
-    p {
-      margin-bottom: 1rem;
+      color: #66fcf1;
+      border-bottom: 1px solid #45a29e;
+      padding-bottom: 0.25rem;
+      margin-top: 0;
     }
 
     .subtitle {
       color: #b8c0cc;
       font-size: 1.05rem;
-      margin-top: 0;
       margin-bottom: 1.5rem;
     }
 
     .section-box {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 12px;
       padding: 1.5rem;
       margin-bottom: 1.5rem;
@@ -94,6 +142,29 @@
       border: 1px solid #45a29e;
     }
 
+    .top-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0 1.5rem;
+    }
+
+    .top-links a {
+      display: inline-block;
+      background: #1f222a;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #45a29e;
+      color: #66fcf1;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .top-links a:hover {
+      background: #2c303a;
+      text-decoration: none;
+    }
+
     a {
       color: #66fcf1;
       text-decoration: none;
@@ -104,198 +175,143 @@
       text-decoration: underline;
     }
 
-    .file-links li {
-      align-items: center;
+    .icon-links {
+      text-align: center;
+      margin-top: 2rem;
     }
 
-    .back-link {
-      margin-top: 1rem;
-      display: inline-block;
+    .icon-links a {
+      margin: 0 10px;
+      color: #66fcf1;
+      font-size: 1.6rem;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
 
-    .back-link i {
-      margin-right: 6px;
-    }
-
-    .top-links {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin: 1.25rem 0 0.5rem;
-    }
-
-    .top-links a {
-      display: inline-block;
-      background: #1f222a;
-      padding: 0.7rem 1rem;
-      border-radius: 8px;
-      border: 1px solid #45a29e;
-    }
-
-    .top-links a:hover {
+    .icon-links a:hover {
+      color: #ffffff;
+      transform: translateY(-2px);
       text-decoration: none;
-      background: #2c303a;
     }
 
-    .project-image {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 1rem;
-      border: 1px solid rgba(102, 252, 241, 0.2);
+    footer {
+      background-color: #1f222a;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      margin-top: 2rem;
     }
 
     @media (max-width: 600px) {
-      body {
-        padding: 1rem;
+      header h1 {
+        font-size: 2rem;
       }
 
-      h1 {
-        font-size: 1.8rem;
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+
+      .glass-box {
+        padding: 1.25rem;
       }
     }
   </style>
 </head>
 <body>
 
-  <p class="back-link">
-    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
-  </p>
+  <header>
+    <h1>Joshua Emmons</h1>
+    <p>Software Engineer | Automation Developer | Navy Veteran</p>
+  </header>
 
-  <h1>Thermostat Controller</h1>
-  <p class="subtitle">
-    Embedded software and hardware integration project focused on automation, control logic, and modular Python development.
-  </p>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="thermostat-code.html" class="active">Software Design</a>
+    <a href="algorithms-code.html">Algorithms</a>
+    <a href="databases-code.html">Databases</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="code-review.html">Code Review</a>
+  </nav>
 
-  <div class="top-links">
-    <a href="assets/Thermostat_controller.py" target="_blank" rel="noopener noreferrer">
-      <i class="fas fa-code"></i> View Main Code
-    </a>
-    <a href="assets/Flowchart.pdf" target="_blank" rel="noopener noreferrer">
-      <i class="fas fa-sitemap"></i> View Flowchart
-    </a>
-    <a href="assets/README.md" target="_blank" rel="noopener noreferrer">
-      <i class="fas fa-file-alt"></i> View README
-    </a>
-  </div>
+  <main>
+    <div class="glass-box">
+      <h2>Thermostat Controller</h2>
+      <p class="subtitle">
+        Embedded software and hardware integration project focused on automation, control logic, and modular Python development.
+      </p>
 
-  <div class="section-box">
-    <h2>Project Overview</h2>
-    <p>
-      This project demonstrates my software design and engineering skills through the development
-      of a modular thermostat controller in Python. In addition to writing the control software,
-      I also built the supporting circuit hardware used to simulate thermostat behavior and system interaction.
-    </p>
-    <p>
-      The project combines software structure, control logic, and physical hardware integration
-      to demonstrate how embedded systems can connect code with real-world electrical behavior.
-      The controller was organized around a finite state machine and designed with modular components
-      for clarity, maintainability, and future expansion.
-    </p>
-  </div>
+      <div class="top-links">
+        <a href="assets/Thermostat_controller.py" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-code"></i> View Main Code
+        </a>
+        <a href="assets/Flowchart.pdf" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-sitemap"></i> View Flowchart
+        </a>
+        <a href="assets/README.md" target="_blank" rel="noopener noreferrer">
+          <i class="fas fa-file-alt"></i> View README
+        </a>
+      </div>
 
-  <div class="section-box">
-    <h2>Problem the Project Solves</h2>
-    <p>
-      Thermostat systems must continuously evaluate temperature conditions and determine when to
-      activate heating or cooling states. Without clear control logic and organized design, these
-      systems can become difficult to maintain, test, and expand.
-    </p>
-    <p>
-      This project addresses that challenge by implementing a clean, modular controller that manages
-      system state transitions in a predictable and readable way while also connecting that logic
-      to physical circuit behavior.
-    </p>
-  </div>
+      <div class="section-box">
+        <h2>Project Overview</h2>
+        <p>
+          This project demonstrates my software design and engineering skills through the development
+          of a modular thermostat controller in Python. In addition to writing the control software,
+          I also built the supporting circuit hardware used to simulate thermostat behavior and system interaction.
+        </p>
+        <p>
+          The project combines software structure, control logic, and physical hardware integration
+          to demonstrate how embedded systems can connect code with real-world electrical behavior.
+        </p>
+      </div>
 
-  <div class="section-box">
-    <h2>Key Features</h2>
-    <ul>
-      <li><i class="fas fa-project-diagram"></i> Finite state machine used to manage heating and cooling behavior</li>
-      <li><i class="fas fa-puzzle-piece"></i> Modular Python structure designed for readability and maintainability</li>
-      <li><i class="fas fa-microchip"></i> GPIO-style interaction modeled around Raspberry Pi hardware concepts</li>
-      <li><i class="fas fa-tools"></i> Physical circuit construction to support hardware and control-system integration</li>
-      <li><i class="fas fa-vial"></i> Improved structure to support testing and future enhancements</li>
-      <li><i class="fas fa-file-code"></i> Refactored logic with cleaner comments and documentation</li>
-    </ul>
-  </div>
+      <div class="section-box">
+        <h2>Problem the Project Solves</h2>
+        <p>
+          Thermostat systems must continuously evaluate temperature conditions and determine when to
+          activate heating or cooling states. This project implements a clean, modular controller that
+          manages state transitions in a predictable and maintainable way while also connecting that
+          logic to physical circuit behavior.
+        </p>
+      </div>
 
-  <div class="section-box">
-    <h2>Hardware Implementation</h2>
-    <p>
-      In addition to the software controller, I built the physical circuit used for the project.
-      This allowed me to connect the control logic to real hardware behavior and better understand
-      how embedded software interacts with electrical components in a working system.
-    </p>
-    <p>
-      Building the circuit strengthened the project by demonstrating hands-on integration between
-      software, electronics, and system control concepts rather than limiting the work to code alone.
-    </p>
-  </div>
+      <div class="section-box">
+        <h2>Key Features</h2>
+        <ul>
+          <li><i class="fas fa-project-diagram"></i> Finite state machine used to manage heating and cooling behavior</li>
+          <li><i class="fas fa-puzzle-piece"></i> Modular Python structure designed for readability and maintainability</li>
+          <li><i class="fas fa-microchip"></i> GPIO-style interaction modeled around Raspberry Pi hardware concepts</li>
+          <li><i class="fas fa-tools"></i> Physical circuit construction to support hardware and control-system integration</li>
+          <li><i class="fas fa-vial"></i> Improved structure to support testing and future enhancements</li>
+          <li><i class="fas fa-file-code"></i> Refactored logic with cleaner comments and documentation</li>
+        </ul>
+      </div>
 
-  <div class="section-box">
-    <h2>Technologies & Concepts</h2>
-    <div class="tech-list">
-      <span class="tech-badge">Python</span>
-      <span class="tech-badge">Embedded Systems</span>
-      <span class="tech-badge">Finite State Machine</span>
-      <span class="tech-badge">Modular Design</span>
-      <span class="tech-badge">GPIO Concepts</span>
-      <span class="tech-badge">Hardware Integration</span>
-      <span class="tech-badge">Software Engineering</span>
+      <div class="section-box">
+        <h2>Technologies & Concepts</h2>
+        <div class="tech-list">
+          <span class="tech-badge">Python</span>
+          <span class="tech-badge">Embedded Systems</span>
+          <span class="tech-badge">Finite State Machine</span>
+          <span class="tech-badge">Modular Design</span>
+          <span class="tech-badge">GPIO Concepts</span>
+          <span class="tech-badge">Hardware Integration</span>
+          <span class="tech-badge">Software Engineering</span>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <div class="section-box">
-    <h2>Engineering Focus</h2>
-    <p>
-      This project highlights several core software engineering principles: breaking complex behavior
-      into manageable modules, organizing logic for clarity, and designing software that could be
-      extended into real embedded hardware environments.
-    </p>
-    <p>
-      It also reflects my interest in automation and control systems by combining software structure
-      with practical real-world system behavior and physical circuit implementation.
-    </p>
-  </div>
+    <div class="icon-links">
+      <a href="https://github.com/Pixelspacecowboy" target="_blank" title="GitHub Profile" aria-label="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:joshua.emmons101@gmail.com" title="Email Joshua" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/" target="_blank" title="LinkedIn Profile" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+    </div>
+  </main>
 
-  <div class="section-box">
-    <h2>Included Files</h2>
-    <ul class="file-links">
-      <li>
-        <i class="fas fa-code"></i>
-        <a href="assets/constants.py" target="_blank" rel="noopener noreferrer">constants.py</a>
-      </li>
-      <li>
-        <i class="fas fa-code"></i>
-        <a href="assets/Thermostat_controller.py" target="_blank" rel="noopener noreferrer">Thermostat_controller.py</a>
-      </li>
-      <li>
-        <i class="fas fa-code"></i>
-        <a href="assets/utils.py" target="_blank" rel="noopener noreferrer">utils.py</a>
-      </li>
-      <li>
-        <i class="fas fa-sitemap"></i>
-        <a href="assets/Flowchart.pdf" target="_blank" rel="noopener noreferrer">Flowchart.pdf</a>
-      </li>
-      <li>
-        <i class="fas fa-file-alt"></i>
-        <a href="assets/README.md" target="_blank" rel="noopener noreferrer">README.md</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="section-box">
-    <h2>Why This Project Matters</h2>
-    <p>
-      This project shows my ability to design software that is not only functional, but also organized,
-      maintainable, and grounded in real engineering logic. It demonstrates how I approach systems that
-      combine structured software behavior with practical operational use cases.
-    </p>
-    <p>
-      By building both the controller software and the physical circuit, I was able to demonstrate
-      a stronger understanding of embedded systems, hardware interaction, and end-to-end engineering design.
-    </p>
-  </div>
+  <footer>
+    &copy; 2026 Joshua Emmons | Software Engineer Portfolio | Built with GitHub Pages
+  </footer>
 
   <!-- Optional image section: use this if you add a circuit photo later -->
   <!--
