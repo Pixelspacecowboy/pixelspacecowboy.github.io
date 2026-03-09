@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Joshua Emmons | Software Engineer Portfolio showcasing projects in software design, algorithms, and databases.">
+  <meta
+    name="description"
+    content="Joshua Emmons | Software Engineer portfolio featuring embedded systems, automation, full-stack development, algorithms, and database projects."
+  >
   <meta name="author" content="Joshua Emmons">
-  <title>Joshua Emmons | Software Engineering Portfolio</title>
+  <title>Joshua Emmons | Software Engineer Portfolio</title>
   <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
+      font-family: "Segoe UI", sans-serif;
       margin: 0;
       padding: 0;
       background: linear-gradient(to bottom, #0f1116, #1c1f26);
@@ -32,13 +38,13 @@
 
     header {
       background: linear-gradient(90deg, #66fcf1, #45a29e);
-      padding: 2rem;
+      padding: 2.5rem 1.5rem;
       text-align: center;
       color: #0f1116;
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
       margin: 0;
     }
 
@@ -46,6 +52,46 @@
       font-size: 1.1rem;
       margin-top: 0.5rem;
       color: #0f1116;
+      font-weight: 600;
+    }
+
+    .hero-text {
+      max-width: 850px;
+      margin: 1.25rem auto 0;
+      font-size: 1rem;
+      color: #0f1116;
+      font-weight: 500;
+    }
+
+    .hero-buttons {
+      margin-top: 1.5rem;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      margin: 0.4rem;
+      padding: 0.75rem 1.2rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #0f1116;
+      color: #66fcf1;
+    }
+
+    .btn-secondary {
+      background: rgba(15, 17, 22, 0.12);
+      color: #0f1116;
+      border: 1px solid rgba(15, 17, 22, 0.25);
+    }
+
+    .hero-buttons a:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+      text-decoration: none;
     }
 
     .cursor {
@@ -57,6 +103,9 @@
       background-color: #1f222a;
       text-align: center;
       padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     nav a {
@@ -79,12 +128,12 @@
 
     main {
       padding: 2rem;
-      max-width: 900px;
+      max-width: 1000px;
       margin: auto;
     }
 
     section {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     h2 {
@@ -92,27 +141,34 @@
       border-bottom: 1px solid #45a29e;
       padding-bottom: 0.25rem;
       transition: all 0.3s ease;
+      margin-bottom: 1rem;
     }
 
     section:hover h2 {
       color: #ffffff;
-      transform: scale(1.03);
+      transform: scale(1.01);
+    }
+
+    p {
+      margin-top: 0.6rem;
     }
 
     ul {
       list-style: none;
       padding: 0;
+      margin: 0;
     }
 
     li {
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       padding: 1rem;
       background: #1f222a;
       border-left: 4px solid #66fcf1;
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
       border-radius: 6px;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      gap: 12px;
     }
 
     li:hover {
@@ -122,9 +178,10 @@
 
     li i {
       color: #66fcf1;
-      margin-right: 12px;
       font-size: 1.2rem;
+      margin-top: 3px;
       transition: transform 0.3s;
+      min-width: 20px;
     }
 
     li:hover i {
@@ -150,6 +207,38 @@
       margin: 2rem 0;
     }
 
+    .skills-grid,
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .card {
+      background: #1f222a;
+      border-radius: 10px;
+      padding: 1.2rem;
+      border-top: 3px solid #66fcf1;
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #ffffff;
+      font-size: 1.05rem;
+    }
+
+    .muted {
+      color: #b8c0cc;
+    }
+
+    .project-title {
+      color: #ffffff;
+      font-size: 1.05rem;
+      margin-bottom: 0.25rem;
+    }
+
     .icon-links {
       text-align: center;
       margin-top: 2rem;
@@ -158,12 +247,14 @@
     .icon-links a {
       margin: 0 10px;
       color: #66fcf1;
-      font-size: 1.5rem;
-      transition: color 0.3s;
+      font-size: 1.6rem;
+      transition: color 0.3s ease, transform 0.2s ease;
     }
 
     .icon-links a:hover {
       color: #ffffff;
+      transform: translateY(-2px);
+      text-decoration: none;
     }
 
     footer {
@@ -176,11 +267,24 @@
 
     @media (max-width: 600px) {
       h1 {
-        font-size: 2rem;
+        font-size: 2.1rem;
       }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
       nav a {
         display: block;
         margin: 0.5rem 0;
+      }
+
+      main {
+        padding: 1rem;
+      }
+
+      .glass-box {
+        padding: 1.25rem;
       }
     }
   </style>
@@ -188,92 +292,249 @@
 <body>
   <header>
     <h1>Joshua Emmons</h1>
-    <p class="subtitle"><span id="typed-text"></span><span class="cursor">|</span></p>
+    <p class="subtitle">
+      <span id="typed-text"></span><span class="cursor">|</span>
+    </p>
+    <p class="hero-text">
+      Software engineer, Navy veteran, and builder of practical systems that connect
+      software, automation, embedded hardware, and data-driven problem solving.
+      I create solutions that improve visibility, reliability, and efficiency.
+    </p>
+    <div class="hero-buttons">
+      <a class="btn-primary" href="#projects">View Projects</a>
+      <a class="btn-secondary" href="mailto:joshua.emmons101@gmail.com">Contact Me</a>
+    </div>
   </header>
 
   <nav>
-    <nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="thermostat-code.html">Software Design</a>
-  <a href="algorithms-code.html">Algorithms</a>
-  <a href="databases-code.html">Databases</a>
-  <a href="self-assessment.html">Self-Assessment</a>
-  <a href="code-review.html">Code Review</a>
-</nav>
-
+    <a href="index.html" class="active">Home</a>
+    <a href="thermostat-code.html">Software Design</a>
+    <a href="algorithms-code.html">Algorithms</a>
+    <a href="databases-code.html">Databases</a>
+    <a href="self-assessment.html">Self-Assessment</a>
+    <a href="code-review.html">Code Review</a>
   </nav>
 
   <main>
     <div class="glass-box">
-      <section>
-        <h2>Welcome to My Computer Science Capstone Portfolio</h2>
+      <section id="about">
+        <h2>About Me</h2>
         <p>
-          I’m a Navy veteran transitioning into the IT field. This portfolio was built as the final project for my B.S. in Computer Science at SNHU. It demonstrates my growth in three core areas:
+          I’m Joshua Emmons, a software engineer with a background in electrical systems,
+          operations, and technical problem solving. My experience in the Navy and my
+          software engineering education have shaped the way I build systems: practical,
+          reliable, and designed to solve real problems.
         </p>
+        <p>
+          This portfolio highlights projects in software design, algorithms, and database
+          development, along with work that reflects my interest in automation, embedded
+          systems, and full-stack applications.
+        </p>
+      </section>
+
+      <section id="services">
+        <h2>What I Build</h2>
+        <div class="services-grid">
+          <div class="card">
+            <h3>Embedded & Automation Systems</h3>
+            <p class="muted">
+              Raspberry Pi projects, hardware integration, control logic, and automation-focused development.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Software Applications</h3>
+            <p class="muted">
+              Practical tools and applications built to improve workflow, organization, and usability.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Data & Algorithms</h3>
+            <p class="muted">
+              Efficient solutions using sorting, searching, and structured logic to process information effectively.
+            </p>
+          </div>
+          <div class="card">
+            <h3>Database-Driven Projects</h3>
+            <p class="muted">
+              Applications that manage, store, and retrieve data in ways that support real user needs.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Featured Projects</h2>
         <ul>
-          <li><i class="fas fa-cogs"></i>Software Design & Engineering</li>
-          <li><i class="fas fa-brain"></i>Algorithms & Data Structures</li>
-          <li><i class="fas fa-database"></i>Database Systems</li>
+          <li>
+            <i class="fas fa-thermometer-half"></i>
+            <div>
+              <div class="project-title">
+                <a href="thermostat-code.html">Thermostat Controller</a>
+              </div>
+              <div class="muted">
+                Embedded software design project using structured control logic to manage a thermostat system.
+                Demonstrates software architecture, system behavior, and practical engineering problem solving.
+              </div>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-chart-line"></i>
+            <div>
+              <div class="project-title">
+                <a href="algorithms-code.html">Student Score Sorter</a>
+              </div>
+              <div class="muted">
+                Algorithms and data structures project focused on sorting and searching techniques to improve
+                data handling efficiency and performance.
+              </div>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-book"></i>
+            <div>
+              <div class="project-title">
+                <a href="databases-code.html">Book Tracker App</a>
+              </div>
+              <div class="muted">
+                Database-centered application demonstrating data storage, retrieval, and application structure
+                for managing records in a functional user-focused system.
+              </div>
+            </div>
+          </li>
         </ul>
       </section>
 
-      <section>
-        <h2>Capstone Artifacts</h2>
+      <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="card">
+            <h3>Languages</h3>
+            <p class="muted">Python, Java, C++, JavaScript, HTML, CSS</p>
+          </div>
+          <div class="card">
+            <h3>Development Areas</h3>
+            <p class="muted">Software Engineering, Full-Stack Development, Embedded Systems, Automation</p>
+          </div>
+          <div class="card">
+            <h3>Core Concepts</h3>
+            <p class="muted">Data Structures, Algorithms, Database Design, Secure Coding, System Design</p>
+          </div>
+          <div class="card">
+            <h3>Tools & Platforms</h3>
+            <p class="muted">GitHub, Git, Raspberry Pi, Node.js, Express, Angular, MongoDB</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="background">
+        <h2>Professional Background</h2>
+        <p>
+          Before transitioning into software engineering, I served as a U.S. Navy Electrician’s Mate,
+          working with critical systems and technical operations. That experience built a strong
+          foundation in troubleshooting, reliability, accountability, and disciplined execution.
+        </p>
+        <p>
+          Today, I bring that same mindset into software development by building systems that are
+          structured, maintainable, and aligned with real-world needs.
+        </p>
+      </section>
+
+      <section id="capstone">
+        <h2>Capstone & Supplemental Materials</h2>
         <ul>
-          <li><i class="fas fa-thermometer-half"></i><a href="thermostat-code.html">Thermostat Controller (Software Design & Engineering)</a></li>
-          <li><i class="fas fa-chart-line"></i><a href="algorithms-code.html">Student Score Sorter (Algorithms & Data Structures)</a></li>
-          <li><i class="fas fa-book"></i><a href="databases-code.html">Book Tracker App (Databases)</a></li>
+          <li>
+            <i class="fas fa-user-edit"></i>
+            <div>
+              <div class="project-title">
+                <a href="self-assessment.html">Professional Self-Assessment</a>
+              </div>
+              <div class="muted">
+                Reflection on growth, technical development, and readiness to contribute as a software professional.
+              </div>
+            </div>
+          </li>
+          <li>
+            <i class="fas fa-video"></i>
+            <div>
+              <div class="project-title">
+                <a href="code-review.html">Code Review Walkthrough Video</a>
+              </div>
+              <div class="muted">
+                Video overview of selected artifacts and the design, implementation, and enhancement decisions behind them.
+              </div>
+            </div>
+          </li>
         </ul>
       </section>
 
-      <section>
-        <h2>Supplemental Materials</h2>
-        <ul>
-          <li><i class="fas fa-user-edit"></i><a href="self-assessment.html">Professional Self-Assessment</a></li>
-          <li><i class="fas fa-video"></i><a href="code-review.html">Code Review Walkthrough Video</a></li>
-        </ul>
-      </section>
-
-      <section>
-        <p style="text-align: center; margin-top: 2rem;">
-          Want to work together or learn more? Check out my
-          <a href="https://github.com/Pixelspacecowboy" target="_blank">GitHub</a> or
-          <a href="mailto:joshua.emmons101@gmail.com">email me</a>.
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>
+          I’m open to software engineering opportunities, technical collaboration, and project-based work.
+        </p>
+        <p>
+          Email:
+          <a href="mailto:joshua.emmons101@gmail.com">joshua.emmons101@gmail.com</a>
+        </p>
+        <p>
+          GitHub:
+          <a href="https://github.com/Pixelspacecowboy" target="_blank">github.com/Pixelspacecowboy</a>
+        </p>
+        <p>
+          LinkedIn:
+          <a href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/" target="_blank">
+            linkedin.com/in/joshua-emmons-3b42161b9
+          </a>
         </p>
       </section>
     </div>
 
     <div class="icon-links">
-      <a href="https://github.com/Pixelspacecowboy" target="_blank" title="GitHub Profile" aria-label="GitHub"><i class="fab fa-github"></i></a>
-      <a href="mailto:joshua.emmons101@gmail.com" title="Email Joshua" aria-label="Email"><i class="fas fa-envelope"></i></a>
-      <a href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/" target="_blank" title="LinkedIn Profile" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a
+        href="https://github.com/Pixelspacecowboy"
+        target="_blank"
+        title="GitHub Profile"
+        aria-label="GitHub"
+      ><i class="fab fa-github"></i></a>
+
+      <a
+        href="mailto:joshua.emmons101@gmail.com"
+        title="Email Joshua"
+        aria-label="Email"
+      ><i class="fas fa-envelope"></i></a>
+
+      <a
+        href="https://www.linkedin.com/in/joshua-emmons-3b42161b9/"
+        target="_blank"
+        title="LinkedIn Profile"
+        aria-label="LinkedIn"
+      ><i class="fab fa-linkedin"></i></a>
     </div>
   </main>
 
   <footer>
-    &copy; 2025 Joshua Emmons | Software Engineering Portfolio | Built with GitHub Pages
+    &copy; 2026 Joshua Emmons | Software Engineer Portfolio | Built with GitHub Pages
   </footer>
 
-  <!-- JS Effects -->
   <script>
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
-    });
 
-    const text = "Retired Navy | Software Engineer | CS 499 Capstone";
-    let i = 0;
-    const speed = 75;
-    function typeEffect() {
-      if (i < text.length) {
-        document.getElementById("typed-text").innerHTML += text.charAt(i);
-        i++;
-        setTimeout(typeEffect, speed);
+      const text = "Software Engineer | Automation Developer | Navy Veteran";
+      let i = 0;
+      const speed = 65;
+      const typedText = document.getElementById("typed-text");
+
+      function typeEffect() {
+        if (i < text.length) {
+          typedText.innerHTML += text.charAt(i);
+          i++;
+          setTimeout(typeEffect, speed);
+        }
       }
-    }
-    window.onload = () => {
+
       typeEffect();
-      document.body.classList.add("loaded");
-    };
+    });
   </script>
 </body>
 </html>
