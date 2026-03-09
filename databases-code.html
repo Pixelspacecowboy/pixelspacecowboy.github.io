@@ -3,33 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Book Tracker App (Databases)</title>
+  <title>Book Tracker App | Joshua Emmons</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: #0f1116;
+      background: linear-gradient(to bottom, #0f1116, #1c1f26);
       color: #eaeaea;
-      max-width: 800px;
+      max-width: 950px;
       margin: auto;
       padding: 2rem;
-      line-height: 1.6;
+      line-height: 1.7;
+      letter-spacing: 0.2px;
     }
 
     h1 {
       color: #66fcf1;
       border-bottom: 1px solid #45a29e;
-      padding-bottom: 0.25rem;
+      padding-bottom: 0.35rem;
+      margin-bottom: 0.5rem;
     }
 
     h2 {
       color: #45a29e;
       margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    p {
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      color: #b8c0cc;
+      font-size: 1.05rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-box {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 10px rgba(102, 252, 241, 0.08);
     }
 
     ul {
       list-style: none;
       padding-left: 0;
+      margin: 0;
     }
 
     li {
@@ -38,11 +61,37 @@
       margin-bottom: 1rem;
       border-left: 4px solid #66fcf1;
       border-radius: 6px;
-      transition: background 0.3s ease;
+      transition: background 0.3s ease, transform 0.2s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
     }
 
     li:hover {
       background: #2c303a;
+      transform: translateX(4px);
+    }
+
+    li i {
+      color: #66fcf1;
+      margin-top: 4px;
+      min-width: 18px;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+
+    .tech-badge {
+      background: #1f222a;
+      color: #66fcf1;
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      border: 1px solid #45a29e;
     }
 
     a {
@@ -55,38 +104,174 @@
       text-decoration: underline;
     }
 
+    .file-links li {
+      align-items: center;
+    }
+
     .back-link {
-      margin-top: 2rem;
+      margin-top: 1rem;
       display: inline-block;
     }
 
     .back-link i {
       margin-right: 6px;
     }
+
+    .top-links {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.25rem 0 0.5rem;
+    }
+
+    .top-links a {
+      display: inline-block;
+      background: #1f222a;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      border: 1px solid #45a29e;
+    }
+
+    .top-links a:hover {
+      text-decoration: none;
+      background: #2c303a;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Book Tracker App (Databases)</h1>
-  <p>
-    This project showcases my database management skills by developing a Python-based CLI application that interacts with an SQLite database. Enhancements include safe SQL execution using parameterized queries, data validation, and user-friendly CRUD operations.
+  <p class="back-link">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
   </p>
-  <ul>
-    <li>🗃️ Designed a normalized SQLite database schema for storing books</li>
-    <li>🔐 Implemented input validation and SQL injection protection</li>
-    <li>🧾 Added Create, Read, Update, and Delete (CRUD) functionality</li>
-    <li>🧪 Tested edge cases including null fields and duplicate entries</li>
-  </ul>
 
-  <h2>Included Files</h2>
-  <ul>
-    <li><a href="assets/book_tracker_enhanced.py" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> book_tracker_enhanced.py</a></li>
-    <li><a href="assets/book_tracker_original.py" target="_blank" rel="noopener noreferrer"><i class="fas fa-code"></i> book_tracker_original.py</a></li>
-    <li><a href="assets/books_enhanced.db" target="_blank" rel="noopener noreferrer"><i class="fas fa-database"></i> books_enhanced.db</a></li>
-    <li><a href="assets/ReadMe.txt" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-alt"></i> ReadMe.txt</a></li>
-  </ul>
+  <h1>Book Tracker App</h1>
+  <p class="subtitle">
+    Database-focused application demonstrating structured data management, secure SQL practices, and user-focused CRUD functionality.
+  </p>
 
-  <p class="back-link"><a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a></p>
+  <div class="top-links">
+    <a href="assets/book_tracker_enhanced.py" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-code"></i> View Enhanced Code
+    </a>
+    <a href="assets/book_tracker_original.py" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-code"></i> View Original Code
+    </a>
+    <a href="assets/books_enhanced.db" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-database"></i> View Database
+    </a>
+    <a href="assets/ReadMe.txt" target="_blank" rel="noopener noreferrer">
+      <i class="fas fa-file-alt"></i> View README
+    </a>
+  </div>
+
+  <div class="section-box">
+    <h2>Project Overview</h2>
+    <p>
+      This project showcases my database development skills through the creation of a Python-based
+      command-line application that interacts with an SQLite database. The application was designed
+      to manage book records through structured data storage and user-friendly CRUD operations.
+    </p>
+    <p>
+      The enhanced version of the project focuses on safer SQL execution, stronger input validation,
+      and improved usability, demonstrating how database-backed applications can be made more secure,
+      reliable, and maintainable.
+    </p>
+  </div>
+
+  <div class="section-box">
+    <h2>Problem the Project Solves</h2>
+    <p>
+      Applications that manage structured information need reliable ways to store, retrieve, update,
+      and delete records. Without proper database design and safe query handling, systems can become
+      difficult to maintain and vulnerable to data integrity or security issues.
+    </p>
+    <p>
+      This project addresses that challenge by implementing a normalized SQLite schema and secure,
+      parameterized database operations that support accurate record management and safer user input handling.
+    </p>
+  </div>
+
+  <div class="section-box">
+    <h2>Key Features</h2>
+    <ul>
+      <li><i class="fas fa-database"></i> Designed a normalized SQLite database schema for storing and managing book records</li>
+      <li><i class="fas fa-shield-alt"></i> Implemented parameterized queries to reduce SQL injection risk</li>
+      <li><i class="fas fa-check-circle"></i> Added input validation to improve data quality and application reliability</li>
+      <li><i class="fas fa-edit"></i> Built Create, Read, Update, and Delete (CRUD) functionality for record management</li>
+      <li><i class="fas fa-vial"></i> Tested edge cases including null values, invalid inputs, and duplicate entries</li>
+    </ul>
+  </div>
+
+  <div class="section-box">
+    <h2>Technologies & Concepts</h2>
+    <div class="tech-list">
+      <span class="tech-badge">Python</span>
+      <span class="tech-badge">SQLite</span>
+      <span class="tech-badge">Database Design</span>
+      <span class="tech-badge">CRUD Operations</span>
+      <span class="tech-badge">Parameterized Queries</span>
+      <span class="tech-badge">Input Validation</span>
+      <span class="tech-badge">SQL Security</span>
+    </div>
+  </div>
+
+  <div class="section-box">
+    <h2>Engineering Focus</h2>
+    <p>
+      This project highlights the importance of designing database-driven applications with both
+      functionality and security in mind. It demonstrates how application logic and data storage
+      must work together to support reliable user interactions.
+    </p>
+    <p>
+      It also reflects my understanding of how careful schema design, safe query execution, and
+      validation practices contribute to better software quality and more trustworthy systems.
+    </p>
+  </div>
+
+  <div class="section-box">
+    <h2>Included Files</h2>
+    <ul class="file-links">
+      <li>
+        <i class="fas fa-code"></i>
+        <a href="assets/book_tracker_enhanced.py" target="_blank" rel="noopener noreferrer">book_tracker_enhanced.py</a>
+      </li>
+      <li>
+        <i class="fas fa-code"></i>
+        <a href="assets/book_tracker_original.py" target="_blank" rel="noopener noreferrer">book_tracker_original.py</a>
+      </li>
+      <li>
+        <i class="fas fa-database"></i>
+        <a href="assets/books_enhanced.db" target="_blank" rel="noopener noreferrer">books_enhanced.db</a>
+      </li>
+      <li>
+        <i class="fas fa-file-alt"></i>
+        <a href="assets/ReadMe.txt" target="_blank" rel="noopener noreferrer">ReadMe.txt</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section-box">
+    <h2>Why This Project Matters</h2>
+    <p>
+      Database-backed applications are a core part of modern software systems. This project shows my
+      ability to build applications that not only manage data effectively, but also apply secure coding
+      and validation practices that improve reliability.
+    </p>
+    <p>
+      It demonstrates how I approach software development with attention to structure, usability,
+      and data integrity, which are all critical in real-world applications.
+    </p>
+  </div>
 
 </body>
 </html>
